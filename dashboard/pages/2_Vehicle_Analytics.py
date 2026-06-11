@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 # cargar dataset
 df = pd.read_csv("dashboard/data/fleet_dataset.csv")
 
