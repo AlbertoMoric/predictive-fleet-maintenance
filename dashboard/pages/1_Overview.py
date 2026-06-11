@@ -11,3 +11,16 @@ Welcome to the fleet monitoring dashboard.
 Monitor vehicle health, detect potential failures,
 and analyze fleet performance in real time.
 """)
+# -----------------------------
+# KPIs SECTION
+# -----------------------------
+st.subheader("📊 Fleet Overview KPIs")
+fleet_size = len(df)
+active_alerts = df["failure_risk"].sum()
+avg_battery = round(df["battery_health"].mean(), 2)
+avg_temp = round(df["engine_temp"].mean(), 1)
+col1, col2, col3, col4 = st.columns(4)
+col1.metric("🚛 Fleet Size", fleet_size)
+col2.metric("⚠️ Active Alerts", active_alerts)
+col3.metric("🔋 Avg Battery Health", avg_battery)
+col4.metric("🌡 Avg Engine Temp", avg_temp)
