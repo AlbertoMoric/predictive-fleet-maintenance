@@ -15,14 +15,14 @@ st.write(type(model))
 #---------------------------------------------------------
 input_data = [[
     9,      # vehicle_age
-    120000, # km_driven
-    90,     # engine_temp
+    1200000, # km_driven
+    180,     # engine_temp
     0.3,    # vibration_level
     0.8,    # battery_health
-    5000,   # last_service_km
-    10,     # maintenance_delay_days
-    6,      # driving_hours_day
-    3000    # load_weight
+    50000,   # last_service_km
+    100,     # maintenance_delay_days
+    18,      # driving_hours_day
+    30000    # load_weight
 ]]
 
 prediction = model.predict(input_data)
