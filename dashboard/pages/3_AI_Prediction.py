@@ -1,8 +1,10 @@
 import streamlit as st
 import pandas as pd
-import joblib
+import pickle
 # cargar modelo (solo una vez)
-model = joblib.load("dashboard/models/best_model.pkl")
+
+with open("dashboard/models/best_model.pkl", "rb") as f:
+    model = pickle.load(f)
 
 st.title("🤖 AI Vehicle Failure Prediction")
 
