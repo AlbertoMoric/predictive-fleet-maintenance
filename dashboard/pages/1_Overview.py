@@ -40,3 +40,20 @@ else:
 st.subheader("🚦 Fleet Status")
 st.markdown(f"### {status}")
 st.write(message)
+# -----------------------------
+# ALERTS SECTION
+# -----------------------------
+alerts_df = df[df["failure_risk"] == 1]
+alerts_df = alerts_df[[
+    "vehicle_id",
+    "km_driven",
+    "engine_temp",
+    "battery_health",
+    "maintenance_delay_days"
+]]
+st.subheader("🚨 Active Alerts")
+if len(alerts_df) == 0:
+    st.success("🟢 No active alerts. Fleet is healthy.")
+else:
+    st.warning(f"⚠️ {len(alerts_df)} vehicles require attention")
+    st.dataframe(alerts_df)
