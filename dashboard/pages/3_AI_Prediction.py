@@ -2,12 +2,10 @@ import streamlit as st
 import pandas as pd
 import pickle
 # cargar modelo (solo una vez)
-
 with open("dashboard/models/best_model.pkl", "rb") as f:
     model = pickle.load(f)
 
 st.title("🤖 AI Vehicle Failure Prediction")
-
 st.markdown("Introduce los datos del vehículo para predecir el riesgo de fallo.")
 
 # -----------------------------
