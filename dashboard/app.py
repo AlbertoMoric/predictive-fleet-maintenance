@@ -10,3 +10,6 @@ df = pd.read_csv("dashboard/data/fleet_dataset.csv")
 import pickle
 with open("dashboard/models/best_model.pkl", "rb") as f:
     model = pickle.load(f)
+    
+st.success("App loaded correctly")
+st.write(type(model))
