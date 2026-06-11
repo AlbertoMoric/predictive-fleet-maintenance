@@ -60,3 +60,34 @@ with col4:
         title="KM Driven vs Engine Temperature"
     )
     st.plotly_chart(scatter_chart, use_container_width=True)
+# -----------------------------
+# VEHICLE EXPLORER
+# -----------------------------
+st.subheader("🚗 Vehicle Explorer")
+# selector
+selected_vehicle = st.selectbox(
+    "Select Vehicle ID",
+    df["vehicle_id"]
+)
+# filtrar vehículo
+vehicle_data = df[df["vehicle_id"] == selected_vehicle]
+# obtener primera fila
+vehicle = vehicle_data.iloc[0]
+# métricas
+col1, col2, col3 = st.columns(3)
+col1.metric("KM Driven", int(vehicle["km_driven"]))
+col2.metric("Engine Temp", round(vehicle["engine_temp"], 1))
+col3.metric("Battery Health", round(vehicle["battery_health"], 2))
+col4, col5, col6 = st.columns(3)
+col4.metric("Vehicle Age", int(vehicle["vehicle_age"]))
+col5.metric("Maintenance Delay", int(vehicle["maintenance_delay_days"]))
+col6.metric("Driving Hours/Day", round(vehicle["driving_hours_day"], 1))
+# riesgo
+st.markdown("### Vehicle Status")
+if vehicle["failure_risk"] == 1:
+    st.error("🔴 HIGH FAILURE RISK")
+else:
+    st.success("🟢 LOW FAILURE RISK")
+# tabla completa opcional
+with st.expander("See full vehicle data"):
+    st.dataframe(vehicle_data)
