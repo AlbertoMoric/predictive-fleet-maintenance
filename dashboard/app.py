@@ -6,3 +6,6 @@ import pickle
 st.title("Predictive Fleet Maintenance")
 # cargar dataset
 df = pd.read_csv("dashboard/data/fleet_dataset.csv")
+import pickle
+with open("dashboard/models/best_model.pkl", "rb") as f:
+    model = pickle.load(f)
