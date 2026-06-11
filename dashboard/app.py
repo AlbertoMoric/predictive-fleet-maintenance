@@ -1,30 +1,52 @@
 import streamlit as st
-import pandas as pd
-import pickle
-#---------------------------------------------------------
-# título
-st.title("Predictive Fleet Maintenance")
-# cargar dataset
-df = pd.read_csv("dashboard/data/fleet_dataset.csv")
-# cargar modelo
-import pickle
-with open("dashboard/models/best_model.pkl", "rb") as f:
-    model = pickle.load(f)    
-st.success("App loaded correctly")
-st.write(type(model))
-#---------------------------------------------------------
-input_data = [[
-    9,      # vehicle_age
-    1200000, # km_driven
-    180,     # engine_temp
-    0.3,    # vibration_level
-    0.8,    # battery_health
-    50000,   # last_service_km
-    100,     # maintenance_delay_days
-    18,      # driving_hours_day
-    30000    # load_weight
-]]
 
-prediction = model.predict(input_data)
+st.set_page_config(page_title="Fleet AI System", layout="wide")
 
-st.write("Failure risk:", prediction[0])
+# -----------------------------
+# HERO
+# -----------------------------
+st.title("🚛 Predictive Fleet Maintenance AI")
+
+st.markdown("""
+### Intelligent fleet monitoring and predictive maintenance system
+
+This platform helps you:
+- Predict vehicle failures using AI
+- Monitor real-time fleet health
+- Analyze operational performance
+- Reduce maintenance costs and downtime
+""")
+
+st.divider()
+
+# -----------------------------
+# VALUE SECTION
+# -----------------------------
+st.subheader("💡 Key Capabilities")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.write("🔴 Predict vehicle failure risk")
+    st.write("📊 Analyze fleet performance")
+    st.write("⚠️ Detect maintenance needs early")
+
+with col2:
+    st.write("📡 Real-time insights")
+    st.write("📉 Reduce operational costs")
+    st.write("🚀 Improve fleet efficiency")
+
+st.divider()
+
+# -----------------------------
+# NAVIGATION GUIDE
+# -----------------------------
+st.subheader("🧭 Navigate the Platform")
+
+st.info("Use the sidebar to access different modules:")
+
+st.markdown("""
+- 📊 Overview → Fleet summary and KPIs  
+- 🚗 Vehicle Analytics → Detailed fleet analysis  
+- 🤖 AI Prediction → Individual vehicle risk prediction  
+""")
