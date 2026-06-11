@@ -24,3 +24,9 @@ col1.metric("🚛 Fleet Size", fleet_size)
 col2.metric("⚠️ Active Alerts", active_alerts)
 col3.metric("🔋 Avg Battery Health", avg_battery)
 col4.metric("🌡 Avg Engine Temp", avg_temp)
+# -----------------------------
+# STATUS SECTION
+# -----------------------------
+st.subheader("🚦 Fleet Status")
+st.markdown(f"### {status}")
+st.write(message)
