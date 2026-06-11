@@ -27,6 +27,16 @@ col4.metric("🌡 Avg Engine Temp", avg_temp)
 # -----------------------------
 # STATUS SECTION
 # -----------------------------
+risk_ratio = df["failure_risk"].mean()
+if risk_ratio < 0.2:
+    status = "🟢 Fleet Status: Stable"
+    message = "All systems operating normally."
+elif risk_ratio < 0.5:
+    status = "🟡 Fleet Status: Warning"
+    message = "Some vehicles require attention."
+else:
+    status = "🔴 Fleet Status: Critical"
+    message = "Immediate maintenance required for multiple vehicles."
 st.subheader("🚦 Fleet Status")
 st.markdown(f"### {status}")
 st.write(message)
