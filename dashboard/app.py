@@ -14,7 +14,7 @@ st.success("App loaded correctly")
 st.write(type(model))
 #---------------------------------------------------------
 input_data = [[
-    5,      # vehicle_age
+    9,      # vehicle_age
     120000, # km_driven
     90,     # engine_temp
     0.3,    # vibration_level
