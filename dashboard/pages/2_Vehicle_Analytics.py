@@ -59,5 +59,4 @@ with col4:
         color="failure_risk",
         title="KM Driven vs Engine Temperature"
     )
-
     st.plotly_chart(scatter_chart, use_container_width=True)
