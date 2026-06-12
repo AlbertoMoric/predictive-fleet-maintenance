@@ -46,6 +46,17 @@ if st.button("🔍 Analyze Risk"):
 
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1]
+    risk_factors = []
+    if engine_temp > 100:
+    risk_factors.append("🌡 High engine temperature")
+    if maintenance_delay_days > 30:
+        risk_factors.append("🛠 Excessive maintenance delay") 
+    if battery_health < 0.4:
+        risk_factors.append("🔋 Poor battery health")    
+    if km_driven > 200000:
+        risk_factors.append("🚛 High mileage detected")    
+    if vibration_level > 0.7:
+        risk_factors.append("📳 Excessive vibration level")
     # -----------------------------
     # OUTPUT
     # -----------------------------   
@@ -62,3 +73,10 @@ if st.button("🔍 Analyze Risk"):
 
     else:
         st.error("🔴 HIGH RISK")
+    st.subheader("🧠 AI Explanation")
+    if len(risk_factors) > 0:
+        st.write("Main risk factors detected:")
+        for factor in risk_factors:
+            st.write(factor)
+    else:
+    st.success("✅ No critical risk factors detected.")
