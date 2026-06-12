@@ -48,7 +48,7 @@ if st.button("🔍 Analyze Risk"):
     probability = model.predict_proba(input_data)[0][1]
     risk_factors = []
     if engine_temp > 100:
-    risk_factors.append("🌡 High engine temperature")
+        risk_factors.append("🌡 High engine temperature")
     if maintenance_delay_days > 30:
         risk_factors.append("🛠 Excessive maintenance delay") 
     if battery_health < 0.4:
