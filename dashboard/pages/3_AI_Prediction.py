@@ -43,30 +43,24 @@ if st.button("🔍 Analyze Risk"):
         "driving_hours_day": driving_hours_day,
         "load_weight": load_weight
     }])
-
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1]
     risk_factors = []
-    if engine_temp > 100:
-        risk_factors.append("🌡 High engine temperature")
-    if maintenance_delay_days > 30:
-        risk_factors.append("🛠 Excessive maintenance delay") 
-    if battery_health < 0.4:
-        risk_factors.append("🔋 Poor battery health")    
-    if km_driven > 200000:
-        risk_factors.append("🚛 High mileage detected")    
-    if vibration_level > 0.7:
-        risk_factors.append("📳 Excessive vibration level")
     recommendations = []
     if engine_temp > 100:
+        risk_factors.append("🌡 High engine temperature")
         recommendations.append("Inspect engine cooling system")
     if maintenance_delay_days > 30:
+        risk_factors.append("🛠 Excessive maintenance delay")
         recommendations.append("Schedule maintenance immediately")
     if battery_health < 0.4:
+        risk_factors.append("🔋 Poor battery health")
         recommendations.append("Inspect or replace battery")
     if km_driven > 200000:
+        risk_factors.append("🚛 High mileage detected")
         recommendations.append("Perform full mechanical inspection")
     if vibration_level > 0.7:
+        risk_factors.append("📳 Excessive vibration level")
         recommendations.append("Inspect suspension and engine mounts")
     # -----------------------------
     # OUTPUT
