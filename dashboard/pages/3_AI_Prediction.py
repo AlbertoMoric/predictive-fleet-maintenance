@@ -79,4 +79,4 @@ if st.button("🔍 Analyze Risk"):
         for factor in risk_factors:
             st.write(factor)
     else:
-    st.success("✅ No critical risk factors detected.")
+        st.success("✅ No critical risk factors detected.")
