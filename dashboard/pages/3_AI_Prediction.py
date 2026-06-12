@@ -57,6 +57,22 @@ if st.button("🔍 Analyze Risk"):
         risk_factors.append("🚛 High mileage detected")    
     if vibration_level > 0.7:
         risk_factors.append("📳 Excessive vibration level")
+    recommendations = []
+    if engine_temp > 100:
+    risk_factors.append("🌡 High engine temperature")
+    recommendations.append("Inspect engine cooling system")
+    if maintenance_delay_days > 30:
+    risk_factors.append("🛠 Excessive maintenance delay")
+    recommendations.append("Schedule maintenance immediately")
+    if battery_health < 0.4:
+    risk_factors.append("🔋 Poor battery health")
+    recommendations.append("Inspect or replace battery")
+    if km_driven > 200000:
+    risk_factors.append("🚛 High mileage detected")
+    recommendations.append("Perform full mechanical inspection")
+    if vibration_level > 0.7:
+    risk_factors.append("📳 Excessive vibration level")
+    recommendations.append("Inspect suspension and engine mounts")
     # -----------------------------
     # OUTPUT
     # -----------------------------   
@@ -80,3 +96,9 @@ if st.button("🔍 Analyze Risk"):
             st.write(factor)
     else:
         st.success("✅ No critical risk factors detected.")
+    st.subheader("🛠 Maintenance Recommendations")
+    if len(recommendations) > 0:
+        for rec in recommendations:
+            st.write(f"✅ {rec}")
+    else:
+        st.success("No maintenance actions required.")
