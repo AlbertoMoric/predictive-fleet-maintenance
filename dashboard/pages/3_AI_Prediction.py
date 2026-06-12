@@ -59,4 +59,5 @@ if st.button("🔍 Analyze Risk"):
     st.metric(
     "Failure Risk Probability",
     f"{probability*100:.1f}%"
-)
+    )
+    st.progress(float(probability))
