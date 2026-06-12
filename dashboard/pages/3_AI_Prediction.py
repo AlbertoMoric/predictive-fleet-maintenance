@@ -61,3 +61,11 @@ if st.button("🔍 Analyze Risk"):
     f"{probability*100:.1f}%"
     )
     st.progress(float(probability))
+    if probability < 0.3:
+        st.success("🟢 LOW RISK")
+
+    elif probability < 0.7:
+        st.warning("🟡 MEDIUM RISK")
+
+    else:
+        st.error("🔴 HIGH RISK")
