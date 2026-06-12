@@ -48,14 +48,7 @@ if st.button("🔍 Analyze Risk"):
     probability = model.predict_proba(input_data)[0][1]
     # -----------------------------
     # OUTPUT
-    # -----------------------------
-    if prediction == 1:
-        st.error("🔴 HIGH RISK: Vehicle likely to fail soon")
-    else:
-        st.success("🟢 LOW RISK: Vehicle is in good condition")
-
-    st.write("Prediction value:", prediction)
-   
+    # -----------------------------   
     st.metric(
     "Failure Risk Probability",
     f"{probability*100:.1f}%"
@@ -64,7 +57,7 @@ if st.button("🔍 Analyze Risk"):
     if probability < 0.3:
         st.success("🟢 LOW RISK")
 
-    elif probability < 0.7:
+    elif probability < 0.6:
         st.warning("🟡 MEDIUM RISK")
 
     else:
