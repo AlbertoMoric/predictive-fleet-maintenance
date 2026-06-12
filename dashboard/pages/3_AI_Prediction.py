@@ -55,3 +55,8 @@ if st.button("🔍 Analyze Risk"):
         st.success("🟢 LOW RISK: Vehicle is in good condition")
 
     st.write("Prediction value:", prediction)
+   
+    st.metric(
+    "Failure Risk Probability",
+    f"{probability*100:.1f}%"
+)
