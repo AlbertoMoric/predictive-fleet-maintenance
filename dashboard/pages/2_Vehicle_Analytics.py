@@ -90,3 +90,71 @@ else:
 with st.expander("See full vehicle data"):
     st.dataframe(vehicle_data)
 st.subheader("➕ Add New Vehicle")
+new_vehicle_id = st.text_input("Vehicle ID")
+new_vehicle_age = st.number_input(
+    "Vehicle Age",
+    0,
+    30,
+    5
+)
+
+new_km_driven = st.number_input(
+    "KM Driven",
+    0,
+    1000000,
+    100000
+)
+
+new_engine_temp = st.slider(
+    "Engine Temperature",
+    60,
+    120,
+    90
+)
+
+new_vibration = st.slider(
+    "Vibration Level",
+    0.0,
+    1.0,
+    0.3
+)
+
+new_battery = st.slider(
+    "Battery Health",
+    0.0,
+    1.0,
+    0.8
+)
+
+new_service_km = st.number_input(
+    "Last Service KM",
+    0,
+    1000000,
+    5000
+)
+
+new_delay = st.number_input(
+    "Maintenance Delay",
+    0,
+    365,
+    10
+)
+
+new_driving_hours = st.slider(
+    "Driving Hours/Day",
+    0,
+    24,
+    6
+)
+
+new_load = st.number_input(
+    "Load Weight",
+    0,
+    50000,
+    3000
+)
+
+new_failure_risk = st.selectbox(
+    "Failure Risk",
+    [0, 1]
+)
