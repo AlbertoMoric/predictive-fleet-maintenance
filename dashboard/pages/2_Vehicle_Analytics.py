@@ -172,3 +172,4 @@ if st.button("💾 Save Vehicle"):
         index=False
     )
     st.success("✅ Vehicle added successfully!")
+st.subheader("🗑 Delete Vehicle")
