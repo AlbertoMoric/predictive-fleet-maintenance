@@ -163,3 +163,12 @@ if st.button("💾 Save Vehicle"):
         "failure_risk": new_failure_risk,
         "vehicle_id": new_vehicle_id
     }])
+    df = pd.concat(
+        [df, new_row],
+        ignore_index=True
+    )
+    df.to_csv(
+        "dashboard/data/fleet_dataset.csv",
+        index=False
+    )
+    st.success("✅ Vehicle added successfully!")
