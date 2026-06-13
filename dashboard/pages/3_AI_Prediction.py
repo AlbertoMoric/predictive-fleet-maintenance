@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
+from datetime import datetime
 # cargar modelo (solo una vez)
 with open("dashboard/models/best_model.pkl", "rb") as f:
     model = pickle.load(f)
