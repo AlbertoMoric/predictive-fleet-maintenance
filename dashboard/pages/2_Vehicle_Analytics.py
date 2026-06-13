@@ -150,3 +150,16 @@ new_failure_risk = st.selectbox(
     [0, 1]
 )
 if st.button("💾 Save Vehicle"):
+    new_row = pd.DataFrame([{
+        "vehicle_age": new_vehicle_age,
+        "km_driven": new_km_driven,
+        "engine_temp": new_engine_temp,
+        "vibration_level": new_vibration,
+        "battery_health": new_battery,
+        "last_service_km": new_service_km,
+        "maintenance_delay_days": new_delay,
+        "driving_hours_day": new_driving_hours,
+        "load_weight": new_load,
+        "failure_risk": new_failure_risk,
+        "vehicle_id": new_vehicle_id
+    }])
