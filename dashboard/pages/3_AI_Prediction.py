@@ -60,6 +60,13 @@ if st.button("🔍 Analyze Risk"):
         "prediction": int(prediction),
         "probability": round(probability, 3)
     }])
+    history_path = "dashboard/data/prediction_history.csv"
+    history_df = pd.read_csv(history_path)
+    history_df = pd.concat(
+        [history_df, new_prediction],
+        ignore_index=True
+    )
+    history_df.to_csv(history_path, index=False)
     risk_factors = []
     recommendations = []
     if engine_temp > 100:
@@ -106,3 +113,7 @@ if st.button("🔍 Analyze Risk"):
             st.write(f"✅ {rec}")
     else:
         st.success("No maintenance actions required.")
+    st.subheader("📜 Prediction History")
+    st.dataframe(
+        history_df.tail(10)
+    )
