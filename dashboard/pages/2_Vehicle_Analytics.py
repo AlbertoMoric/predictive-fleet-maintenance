@@ -149,3 +149,4 @@ new_failure_risk = st.selectbox(
     "Failure Risk",
     [0, 1]
 )
+if st.button("💾 Save Vehicle"):
