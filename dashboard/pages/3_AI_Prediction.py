@@ -46,6 +46,20 @@ if st.button("🔍 Analyze Risk"):
     }])
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1]
+    new_prediction = pd.DataFrame([{
+        "timestamp": datetime.now(),
+        "vehicle_age": vehicle_age,
+        "km_driven": km_driven,
+        "engine_temp": engine_temp,
+        "vibration_level": vibration_level,
+        "battery_health": battery_health,
+        "last_service_km": last_service_km,
+        "maintenance_delay_days": maintenance_delay_days,
+        "driving_hours_day": driving_hours_day,
+        "load_weight": load_weight,
+        "prediction": int(prediction),
+        "probability": round(probability, 3)
+    }])
     risk_factors = []
     recommendations = []
     if engine_temp > 100:
