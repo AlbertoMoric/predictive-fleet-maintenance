@@ -173,3 +173,15 @@ if st.button("💾 Save Vehicle"):
     )
     st.success("✅ Vehicle added successfully!")
 st.subheader("🗑 Delete Vehicle")
+vehicle_to_delete = st.selectbox(
+    "Select Vehicle ID",
+    df["vehicle_id"].unique()
+)
+if st.button("❌ Delete Vehicle"):
+    df = df[df["vehicle_id"] != vehicle_to_delete]
+    df.to_csv(
+        "dashboard/data/fleet_dataset.csv",
+        index=False
+    )
+    st.success(f"✅ Vehicle {vehicle_to_delete} deleted successfully!")
+    st.rerun()
