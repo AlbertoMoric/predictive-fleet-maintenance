@@ -89,3 +89,4 @@ else:
 # tabla completa opcional
 with st.expander("See full vehicle data"):
     st.dataframe(vehicle_data)
+st.subheader("➕ Add New Vehicle")
