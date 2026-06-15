@@ -187,3 +187,75 @@ if st.button("❌ Delete Vehicle"):
     )
     st.success(f"✅ Vehicle {vehicle_to_delete} deleted successfully!")
     st.rerun()
+st.subheader("✏ Edit Vehicle")
+vehicle_to_edit = st.selectbox(
+    "Select Vehicle to Edit",
+    df["vehicle_id"].unique(),
+    key="edit_vehicle_selectbox"
+)
+edit_vehicle_data = df[
+    df["vehicle_id"] == vehicle_to_edit
+].iloc[0]
+edit_vehicle_age = st.number_input(
+    "Edit Vehicle Age",
+    0,
+    30,
+    int(edit_vehicle_data["vehicle_age"])
+)
+edit_km_driven = st.number_input(
+    "Edit KM Driven",
+    0,
+    1000000,
+    int(edit_vehicle_data["km_driven"])
+)
+edit_engine_temp = st.slider(
+    "Edit Engine Temperature",
+    60,
+    120,
+    int(edit_vehicle_data["engine_temp"])
+)
+edit_battery = st.slider(
+    "Edit Battery Health",
+    0.0,
+    1.0,
+    float(edit_vehicle_data["battery_health"])
+)
+edit_failure_risk = st.selectbox(
+    "Edit Failure Risk",
+    [0, 1],
+    index=int(edit_vehicle_data["failure_risk"]),
+    key="edit_failure_selectbox"
+)
+if st.button("💾 Update Vehicle"):
+    df.loc[
+    df["vehicle_id"] == vehicle_to_edit,
+        "vehicle_age"
+    ] = edit_vehicle_age
+
+    df.loc[
+        df["vehicle_id"] == vehicle_to_edit,
+        "km_driven"
+    ] = edit_km_driven
+    
+    df.loc[
+        df["vehicle_id"] == vehicle_to_edit,
+        "engine_temp"
+    ] = edit_engine_temp
+    
+    df.loc[
+        df["vehicle_id"] == vehicle_to_edit,
+        "battery_health"
+    ] = edit_battery
+    
+    df.loc[
+        df["vehicle_id"] == vehicle_to_edit,
+        "failure_risk"
+    ] = edit_failure_risk
+    df.to_csv(
+        "dashboard/data/fleet_dataset.csv",
+        index=False
+    )
+    st.success(
+        f"✅ Vehicle {vehicle_to_edit} updated successfully!"
+    )
+    st.rerun()
