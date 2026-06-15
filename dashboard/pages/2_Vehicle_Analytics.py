@@ -65,7 +65,8 @@ st.subheader("🚗 Vehicle Explorer")
 # selector
 selected_vehicle = st.selectbox(
     "Select Vehicle ID",
-    df["vehicle_id"]
+    df["vehicle_id"],
+    key="vehicle_explorer_selectbox"
 )
 # filtrar vehículo
 vehicle_data = df[df["vehicle_id"] == selected_vehicle]
@@ -175,7 +176,8 @@ if st.button("💾 Save Vehicle"):
 st.subheader("🗑 Delete Vehicle")
 vehicle_to_delete = st.selectbox(
     "Select Vehicle ID",
-    df["vehicle_id"].unique()
+    df["vehicle_id"].unique(),
+    key="delete_vehicle_selectbox"
 )
 if st.button("❌ Delete Vehicle"):
     df = df[df["vehicle_id"] != vehicle_to_delete]
