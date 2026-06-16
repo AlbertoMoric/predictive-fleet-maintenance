@@ -24,6 +24,43 @@ col1.metric("🚛 Fleet Size", fleet_size)
 col2.metric("⚠️ Active Alerts", active_alerts)
 col3.metric("🔋 Avg Battery Health", avg_battery)
 col4.metric("🌡 Avg Engine Temp", avg_temp)
+
+st.subheader("🚨 Fleet Alerts")
+high_risk_count = len(
+    df[df["failure_risk"] == 1]
+)
+high_temp_count = len(
+    df[df["engine_temp"] > 100]
+)
+low_battery_count = len(
+    df[df["battery_health"] < 0.4]
+)
+maintenance_delay_count = len(
+    df[df["maintenance_delay_days"] > 30]
+)
+if high_risk_count > 0:
+    st.error(
+        f"🔴 {high_risk_count} vehicles with high failure risk"
+    )
+if high_temp_count > 0:
+    st.warning(
+        f"🟠 {high_temp_count} vehicles with critical engine temperature"
+    )
+if low_battery_count > 0:
+    st.warning(
+        f"🟡 {low_battery_count} vehicles with low battery health"
+    )
+if maintenance_delay_count > 0:
+    st.info(
+        f"🔧 {maintenance_delay_count} vehicles overdue maintenance"
+    )
+if (
+    high_risk_count == 0
+    and high_temp_count == 0
+    and low_battery_count == 0
+    and maintenance_delay_count == 0
+):
+    st.success("✅ No active fleet alerts")
 # -----------------------------
 # STATUS SECTION
 # -----------------------------
