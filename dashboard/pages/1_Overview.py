@@ -145,17 +145,17 @@ col3.metric(
     "🟢 Low Risk",
     low_ai_risk
 )
-st.markdown("### Most Critical Vehicles")
-top_risk = fleet_results.sort_values(
-    "ai_risk_probability",
-    ascending=False
-)
-st.dataframe(
-    top_risk[
-        [
-            "vehicle_id",
-            "ai_risk_probability",
-            "ai_risk_level"
-        ]
-    ].head(10)
-)
+with st.expander("🚨 Most Critical Vehicles"):
+    top_risk = fleet_results.sort_values(
+        "ai_risk_probability",
+        ascending=False
+    )
+    st.dataframe(
+        top_risk[
+            [
+                "vehicle_id",
+                "ai_risk_probability",
+                "ai_risk_level"
+            ]
+        ].head(10)
+    )
